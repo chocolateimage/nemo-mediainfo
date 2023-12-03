@@ -1,5 +1,5 @@
 Package: nemo-mediainfo
-Version: 1.0.0
+Version: 1.0.1
 Architecture: all
 Depends: nemo, python3, mediainfo, python3-pymediainfo, python3-exifread
 Maintainer: chocolateimage <chocolateimage@protonmail.com>
