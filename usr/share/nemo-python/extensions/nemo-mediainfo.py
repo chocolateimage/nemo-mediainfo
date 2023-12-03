@@ -111,8 +111,9 @@ class MediaPropertyPage(GObject.GObject, Nemo.PropertyPageProvider, Nemo.NameAnd
                     mediatrack.append("Frame Rate",str(fps) + " FPS (" + str(track.frame_rate_mode) + ")")
                     mediatrack.append("Width",str(track.width) + " pixels")
                     mediatrack.append("Height",str(track.height) + " pixels")
-                    mediatrack.append("Duration",human_time_duration(track.duration / 1000))
-                    mediatrack.append("Bit rate",str(track.bit_rate / 1000) + " kb/s")
+                    mediatrack.append("Duration",human_time_duration(float(track.duration) / 1000))
+                    if track.bit_rate != None:
+                        mediatrack.append("Bit rate",str(track.bit_rate / 1000) + " kb/s")
                     mediatrack.append("Bit depth",str(track.bit_depth) + " bits")
                     mediatrack.append("Scan type",str(track.scan_type))
                     mediatrack.append("Compression mode",track.compression_mode)
@@ -122,9 +123,10 @@ class MediaPropertyPage(GObject.GObject, Nemo.PropertyPageProvider, Nemo.NameAnd
                     mediatrack.append("Format",track.format)
                     mediatrack.append("Mode",track.mode)
                     mediatrack.append("Channels",track.channel_s)
-                    mediatrack.append("Duration",human_time_duration(track.duration / 1000))
+                    mediatrack.append("Duration",human_time_duration(float(track.duration) / 1000))
                     mediatrack.append("Sample rate",str(track.sampling_rate / 1000) + " kb/s")
-                    mediatrack.append("Bit rate",str(track.bit_rate / 1000) + " kb/s")
+                    if track.bit_rate != None:
+                        mediatrack.append("Bit rate",str(track.bit_rate / 1000) + " kb/s")
                     mediatrack.append("Compression mode",track.compression_mode)
                     mediafile.tracks.append(mediatrack)
                 if track.track_type == "Image":
