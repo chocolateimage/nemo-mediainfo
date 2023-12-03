@@ -1,0 +1,6 @@
+Package: nemo-mediainfo
+Version: 1.0.0
+Architecture: all
+Depends: nemo, python3, mediainfo, python3-pymediainfo, python3-exifread
+Maintainer: chocolateimage <chocolateimage@protonmail.com>
+Description: View video/audio/image information from the properties tab in Nemo
