@@ -1,0 +1,5 @@
+*.substvars
+*.debhelper.log
+debian/files
+debian/nemo-mediainfo
+.debhelper

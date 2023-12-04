@@ -1,3 +1,9 @@
+Source: nemo-mediainfo
+Maintainer: chocolateimage <chocolateimage@protonmail.com>
+Build-Depends: debhelper (>= 9),
+               python3-distutils-extra,
+               dh-python
+
 Package: nemo-mediainfo
 Version: 1.0.1
 Architecture: all
