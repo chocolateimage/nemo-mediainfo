@@ -99,7 +99,19 @@ class MediaPropertyPage(GObject.GObject, Nemo.PropertyPageProvider, Nemo.NameAnd
             if len(mediafile.shortname) > 30:
                 mediafile.shortname = mediafile.shortname[:30] + "..."
             for track in mediainfo.tracks:
-                if track.track_type == "Video":
+                if track.track_type == "General":
+                    mediatrack = MediaFileTrack("General")
+                    if track.album != None:
+                        mediatrack.append("Album",track.album)
+                    if track.track_name != None:
+                        mediatrack.append("Track Name",track.track_name)
+                    if track.performer != None:
+                        mediatrack.append("Performer",track.performer)
+                    if track.comment != None:
+                        mediatrack.append("Comment",track.comment)
+                    if len(mediatrack.properties) > 0:
+                        mediafile.tracks.append(mediatrack)
+                elif track.track_type == "Video":
                     mediatrack = MediaFileTrack("Video")
                     fps = float(track.frame_rate)
                     if fps.is_integer():
@@ -118,7 +130,7 @@ class MediaPropertyPage(GObject.GObject, Nemo.PropertyPageProvider, Nemo.NameAnd
                     mediatrack.append("Scan type",str(track.scan_type))
                     mediatrack.append("Compression mode",track.compression_mode)
                     mediafile.tracks.append(mediatrack)
-                if track.track_type == "Audio":
+                elif track.track_type == "Audio":
                     mediatrack = MediaFileTrack("Audio")
                     mediatrack.append("Format",track.format)
                     mediatrack.append("Mode",track.mode)
@@ -129,7 +141,7 @@ class MediaPropertyPage(GObject.GObject, Nemo.PropertyPageProvider, Nemo.NameAnd
                         mediatrack.append("Bit rate",str(track.bit_rate / 1000) + " kb/s")
                     mediatrack.append("Compression mode",track.compression_mode)
                     mediafile.tracks.append(mediatrack)
-                if track.track_type == "Image":
+                elif track.track_type == "Image":
                     mediatrack = MediaFileTrack("Image")
                     mediatrack.append("Format",track.format)
                     mediatrack.append("Width",str(track.width) + " pixels")
